@@ -9,8 +9,6 @@
 
 #include "huffman.h"
 
-#define READ_BUFFER_SIZE 4096
-
 
 HufStatus huffman_count_frequencies(FILE* input, uint64_t* frequencies, uint64_t* total_size)
 {

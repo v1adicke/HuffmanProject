@@ -9,6 +9,7 @@
 
 #define SYMBOL_COUNT 256
 #define MAX_CODE_LENGTH 256
+#define READ_BUFFER_SIZE 4096
 
 
 /**
