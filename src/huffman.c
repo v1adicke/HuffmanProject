@@ -67,12 +67,7 @@ static Node* create_node(uint64_t frequency, uint8_t symbol, Node* left, Node* r
     return node;
 }
 
-/**
- * Checks whether a node is a leaf.
- * @param node Tree node.
- * @return true if the node has no children.
- */
-static bool is_leaf(const Node* node)
+bool huffman_is_leaf(const Node* node)
 {
     return node->left == NULL && node->right == NULL;
 }
@@ -183,7 +178,7 @@ void huffman_free_tree(Node* root)
  */
 static void fill_codes(const Node* node, uint8_t* path, size_t depth, Code* codes)
 {
-    if (is_leaf(node))
+    if (huffman_is_leaf(node))
     {
         memcpy(codes[node->symbol].bits, path, depth);
         codes[node->symbol].length = depth;
@@ -212,7 +207,7 @@ void huffman_build_codes(const Node* root, Code* codes)
     }
 
     // A single leaf would get an empty code, so it needs at least one bit.
-    if (is_leaf(root))
+    if (huffman_is_leaf(root))
     {
         codes[root->symbol].bits[0] = 0;
         codes[root->symbol].length = 1;

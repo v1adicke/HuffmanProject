@@ -1,6 +1,7 @@
 #ifndef HUFFMAN_H
 #define HUFFMAN_H
 
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -57,6 +58,13 @@ HufStatus huffman_build_tree(const uint64_t* frequencies, Node** out_root);
  * @param root Root of the tree, may be NULL.
  */
 void huffman_free_tree(Node* root);
+
+/**
+ * Checks whether a node is a leaf.
+ * @param node Tree node.
+ * @return true if the node has no children.
+ */
+bool huffman_is_leaf(const Node* node);
 
 /**
  * Fills the code table from a Huffman tree.

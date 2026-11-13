@@ -29,4 +29,14 @@ typedef struct
  */
 HufStatus format_write_header(FILE* output, const uint64_t* frequencies, uint64_t* header_size);
 
+/**
+ * Reads and checks the archive header written by format_write_header.
+ * @param input       File opened for reading in binary mode.
+ * @param frequencies [out] Array of SYMBOL_COUNT counters.
+ * @param total_size  [out] Size of the original data, the sum of all frequencies.
+ * @param header_size [out] Number of bytes read.
+ * @return HUF_OK on success, HUF_ERR_BAD_ARCHIVE if the header is broken, HUF_ERR_READ if reading failed.
+ */
+HufStatus format_read_header(FILE* input, uint64_t* frequencies, uint64_t* total_size, uint64_t* header_size);
+
 #endif // FORMAT_H
