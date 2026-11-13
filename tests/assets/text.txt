@@ -1,0 +1,11 @@
+Huffman coding is a method of lossless data compression. It assigns shorter codes to symbols that occur
+more often and longer codes to symbols that occur rarely. The codes are prefix-free, which means that no
+code is the beginning of another code, so the encoded bit stream can be decoded without any separators.
+
+The algorithm works in two passes. On the first pass it counts how many times every byte occurs in the
+input. Then it builds a binary tree: it repeatedly takes the two nodes with the smallest frequencies and
+joins them under a new parent node, until only one node is left. The path from the root to a leaf gives
+the code of the symbol in that leaf: going left means 0 and going right means 1.
+
+On the second pass every byte of the input is replaced with its code. The decoder needs the same tree,
+so the frequencies are stored in the header of the archive and the tree is built again before decoding.
