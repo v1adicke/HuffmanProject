@@ -14,6 +14,8 @@ int main(void)
 
     failed += run_huffman_tests();
     failed += run_bit_io_tests();
+    failed += run_format_tests();
+    failed += run_cli_tests();
 
     if (failed != 0)
     {
